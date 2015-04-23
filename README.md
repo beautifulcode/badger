@@ -1,6 +1,6 @@
 # Badger
 
-to get programmer geek pretty badges
+to get the pretty badges that every programmer geek desire
 
 ## TODO
 
