@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"log"
@@ -19,7 +20,9 @@ func getREST(url string) ([]byte, error) {
 		return nil, err
 	}
 	defer http_response.Body.Close()
-
+	if http_response.StatusCode != 200 {
+		return nil, errors.New("API response:" + http_response.Status + " url:" + url)
+	}
 	data, err := ioutil.ReadAll(http_response.Body)
 	if err != nil {
 		return nil, err
@@ -30,17 +33,21 @@ func getREST(url string) ([]byte, error) {
 func getHashNumber(url string) (map[string]int, error) {
 	var hash map[string]int
 	res, err := getREST(url)
-
+	if err != nil {
+		return nil, err
+	}
 	err = json.Unmarshal(res, &hash)
-	return hash, err
+	return hash, nil
 }
 
 func getArray(url string) ([]Repo, error) {
 	var array []Repo
 	res, err := getREST(url)
-
+	if err != nil {
+		return nil, err
+	}
 	err = json.Unmarshal(res, &array)
-	return array, err
+	return array, nil
 }
 
 func badger(username string) map[string]int {
@@ -71,6 +78,11 @@ func badger(username string) map[string]int {
 
 func main() {
 	r := gin.Default()
+
+	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, string("Go to /languages/:username"))
+	})
+
 	r.GET("/languages/:username", func(c *gin.Context) {
 		res := badger(c.Params.ByName("username"))
 		c.JSON(http.StatusOK, res)
