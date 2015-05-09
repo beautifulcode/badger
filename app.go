@@ -80,7 +80,7 @@ func repoCount(username string) map[string]int {
 
 	languages := make(map[string]int)
 
-	res, err := Get("https://api.github.com/users/" + username + "/repos" + "?" + token)
+	res, err := Get("https://api.github.com/users/" + username + "/repos" + "?access_token=" + token)
 	if err != nil {
 		log.Fatalln(err)
 		return languages
@@ -89,7 +89,7 @@ func repoCount(username string) map[string]int {
 	reposLeft := len(repos)
 
 	for _, repo := range repos {
-		go asyncGet(repo.LanguagesUrl+"?"+token, response, errChan)
+		go asyncGet(repo.LanguagesUrl+"?access_token="+token, response, errChan)
 	}
 
 	for {
