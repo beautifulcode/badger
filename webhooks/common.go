@@ -1,17 +1,11 @@
 // +build !debug
-package parser
+package webhooks
 
 import (
-	"encoding/json"
 	"errors"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
-
-type Repo struct {
-	LanguagesUrl string `json:"languages_url"`
-}
 
 func AsyncGet(url string, response chan []byte, errorChannel chan error) {
 	// start := time.Now()
@@ -49,22 +43,4 @@ func Get(url string) ([]byte, error) {
 		return nil, err
 	}
 	return []byte(data), nil
-}
-
-func ParseMapInt(data []byte) map[string]int {
-	var hash map[string]int
-	err := json.Unmarshal(data, &hash)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return hash
-}
-
-func ParseRepo(data []byte) []Repo {
-	var array []Repo
-	err := json.Unmarshal(data, &array)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return array
 }
