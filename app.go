@@ -3,22 +3,26 @@ package main
 
 import (
 	"github.com/3zcurdia/merithub/webhooks"
-	"github.com/gin-gonic/gin"
+	"github.com/codegangsta/negroni"
+	"github.com/julienschmidt/httprouter"
+	"github.com/unrolled/render"
 	"net/http"
 	"os"
 )
 
 func main() {
-	r := gin.Default()
-
-	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, string("Go to /languages/:username"))
+	r := render.New()
+	mux := httprouter.New()
+	mux.GET("/", func(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+		w.Write([]byte("Go to /languages/:username"))
 	})
 
-	r.GET("/languages/:username", func(c *gin.Context) {
-		res := webhooks.GithubCount(c.Params.ByName("username"))
-		c.JSON(http.StatusOK, res)
+	mux.GET("/languages/:username", func(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+		res := webhooks.GithubCount(ps.ByName("username"))
+		r.JSON(w, http.StatusOK, res)
 	})
 
-	r.Run(":" + os.Getenv("PORT"))
+	n := negroni.Classic()
+	n.UseHandler(mux)
+	n.Run(":" + os.Getenv("PORT"))
 }
