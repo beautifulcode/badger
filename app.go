@@ -7,7 +7,6 @@ import (
 	"github.com/3zcurdia/badger/webhooks"
 	"github.com/codegangsta/negroni"
 	"github.com/julienschmidt/httprouter"
-	"github.com/rs/cors"
 	"github.com/unrolled/render"
 	"net/http"
 	"os"
@@ -21,7 +20,6 @@ func sha1String(s string) string {
 
 func main() {
 	r := render.New()
-	c := cors.Default()
 	mux := httprouter.New()
 	mux.GET("/", func(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 		w.Write([]byte("Go to /github/:username/languages/"))
@@ -32,11 +30,10 @@ func main() {
 		w.Header().Set("Etag", sha1String(ps.ByName("username")))
 
 		res := webhooks.GithubCount(ps.ByName("username"))
-		r.JSON(w, http.StatusOK, res)
+		r.JSONP(w, http.StatusOK, "badger", res)
 	})
 
 	n := negroni.Classic()
-	n.Use(c)
 	n.UseHandler(mux)
 	n.Run(":" + os.Getenv("PORT"))
 }
