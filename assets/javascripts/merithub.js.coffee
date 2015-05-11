@@ -14,7 +14,7 @@
 
     setBadges = (languages) =>
       for lang of languages
-        @item.append("<span class='mh-badge-#{lang.toLowerCase()}' title='more than #{easyNumber(languages[lang])} lines of #{lang} code'></span>")
+        @item.append("<span class='badge-#{lang.toLowerCase()}' title='more than #{easyNumber(languages[lang])} lines of #{lang} code'></span>")
 
     $.get("https://merithub.herokuapp.com/github/#{@options.username}/languages/").done (data) => setBadges(data)
     true
