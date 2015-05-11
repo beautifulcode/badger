@@ -4,9 +4,10 @@ package main
 import (
 	"crypto/sha1"
 	"encoding/hex"
-	"github.com/3zcurdia/merithub/webhooks"
+	"github.com/3zcurdia/badger/webhooks"
 	"github.com/codegangsta/negroni"
 	"github.com/julienschmidt/httprouter"
+	"github.com/rs/cors"
 	"github.com/unrolled/render"
 	"net/http"
 	"os"
@@ -20,6 +21,7 @@ func sha1String(s string) string {
 
 func main() {
 	r := render.New()
+	c := cors.Default()
 	mux := httprouter.New()
 	mux.GET("/", func(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 		w.Write([]byte("Go to /github/:username/languages/"))
@@ -34,6 +36,7 @@ func main() {
 	})
 
 	n := negroni.Classic()
+	n.Use(c)
 	n.UseHandler(mux)
 	n.Run(":" + os.Getenv("PORT"))
 }

@@ -8,6 +8,7 @@ to get the pretty badges that every programmer geek desire
 - [x] Use concurrency for performance
 - [x] Migrate to negroni
 - [x] Cache-Control Headers
+- [x] Support CORS
 - [ ] Merge from merithub project
   - [ ] Assets
     - [ ] Javascritp
