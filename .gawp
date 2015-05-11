@@ -1,0 +1,16 @@
+recursive: true           # Watch directories recursively, default: true
+verbose: false            # Verbose logging, default: false
+workers: 4                # Number of concurrent workers (high numbers can thrash IO), default: number CPUs / 2 (minimum 1)
+#logfile: gawp.log        # Gawp logfile, default: stdout
+
+write, create, rename:    # Actionable events (supported: create, write, rename, remove, chmod), executed sequentially
+  (?i)[a-z]+\.(scss|coffee):
+  - rake assets:compile
+
+create:
+  .*:
+  - echo created $file    # Rule submatches and file path can be accessed via $1, $2 ... $n (nth submatch) and $file
+
+remove:
+  .*:
+  - echo removed $file

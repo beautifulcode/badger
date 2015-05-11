@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@font-face {
+  font-family: pictonic;
+  src: url("http://ezcurdia.me/merithub/fonts/pictonic.eot");
+  src: url("http://ezcurdia.me/merithub/fonts/pictonic.eot?#iefix") format("embedded-opentype"),
+      url("http://ezcurdia.me/merithub/fonts/pictonic.ttf") format("truetype"),
+      url("http://ezcurdia.me/merithub/fonts/pictonic.woff") format("woff"),
+      url("http://ezcurdia.me/merithub/fonts/pictonic.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon
+{
+	font-family: "pictonic";
+	font-weight: normal; font-style: normal;
+	-webkit-font-smoothing:  antialiased !important;
+	-moz-font-smoothing:  antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+	font-smoothing:  antialiased !important;
+	line-height:1em;
+}
+
+a.icon, span.icon, small.icon {
+	display: -moz-inline-stack;
+	display:inline-block;
+	zoom: 1;
+	*display: inline;
+}
+
+[class^="badge-"], [class*="badge-"]
+{
+	font-family: "pictonic";
+	font-weight: normal; font-style: normal;
+	-webkit-font-smoothing:  antialiased !important;
+	-moz-font-smoothing:  antialiased !important;
+	font-smoothing:  antialiased !important;
+	line-height:1em;
+}
+
+a[class^="badge-"], a[class*="badge-"], span[class^="badge-"], span[class*="badge-"], small[class^="badge-"], small[class*="badge-"] {
+	display: -moz-inline-stack;
+	display:inline-block;
+	zoom: 1;
+	*display: inline;
+  padding: 8px;
+  margin: 2px;
+  border-radius: 50%;
+  font-size: 32px;
+  border: 2px solid;
+}
+
+.badge-actionscript:before { content:""; }
+.badge-php:before { content:""; }
+.badge-c:before { content:""; }
+.badge-ruby:before { content:""; }
+.badge-csharp:before { content:""; }
+.badge-cplusplus:before { content:""; }
+.badge-ccplusplus:before { content:""; }
+.badge-objc:before { content:""; }
+.badge-javascript:before { content:""; }
+.badge-java:before { content:""; }
+.badge-dotnet:before { content:""; }
+.badge-python:before { content:""; }
+.badge-lua:before { content:""; }
+.badge-air:before { content:""; }
+.badge-jquery:before { content:""; }
+.badge-nodejs:before { content:""; }
+.badge-django:before { content:""; }
+.badge-rails:before { content:""; }
+.badge-coffeescript:before { content:""; }
+.badge-perl:before { content:""; }
+.badge-fortran:before { content:""; }
+.badge-bash:before { content:""; }
+.badge-shell:before { content:""; }
+.badge-cobol:before { content:""; }
+.badge-delphi:before { content:""; }
+.badge-go:before { content:""; }
+.badge-haskell:before { content:""; }
+.badge-scala:before { content:""; }
+.badge-lisp:before { content:""; }
+.badge-basic:before { content:""; }
+.badge-html:before { content:""; }
+.badge-css:before { content:""; }
+.badge-angularjs:before { content:""; }
+.badge-backbonejs:before { content:""; }
+.badge-clojure:before { content:""; }
+.badge-dart:before { content:""; }
+.badge-erlang:before { content:""; }
+.badge-matlab:before { content:""; }
