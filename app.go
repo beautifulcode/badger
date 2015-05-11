@@ -26,11 +26,12 @@ func main() {
 	})
 
 	mux.GET("/github/:username/languages/", func(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
-		w.Header().Set("Cache-Control", "public, max-age=86400") // Exprie headers after 24 hrs
-		w.Header().Set("Etag", sha1String(ps.ByName("username")))
+		w.Header().Set("Access-Control-Allow-Origin", "*")        // Enable CORS
+		w.Header().Set("Cache-Control", "public, max-age=86400")  // Exprie headers after 24 hrs
+		w.Header().Set("Etag", sha1String(ps.ByName("username"))) // Calculate Etag
 
 		res := webhooks.GithubCount(ps.ByName("username"))
-		r.JSONP(w, http.StatusOK, "badger", res)
+		r.JSON(w, http.StatusOK, res)
 	})
 
 	n := negroni.Classic()
