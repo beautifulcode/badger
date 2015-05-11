@@ -12,10 +12,10 @@ import (
 	"os"
 )
 
-func getSha1(s []byte) []byte {
-	h := sha1.New()
-	h.Write(s)
-	return h.Sum(nil)
+func sha1String(s string) string {
+	crypo_hash := sha1.New()
+	crypo_hash.Write([]byte(s))
+	return hex.EncodeToString(crypo_hash.Sum(nil))
 }
 
 func main() {
@@ -26,9 +26,9 @@ func main() {
 	})
 
 	mux.GET("/github/:username/languages/", func(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
-		etag := getSha1([]byte(ps.ByName("username")))
-		w.Header().Set("Cache-Control", "public, max-age=86400")
-		w.Header().Set("Etag", hex.EncodeToString(etag))
+		w.Header().Set("Cache-Control", "public, max-age=86400") // Exprie headers after 24 hrs
+		w.Header().Set("Etag", sha1String(ps.ByName("username")))
+
 		res := webhooks.GithubCount(ps.ByName("username"))
 		r.JSON(w, http.StatusOK, res)
 	})

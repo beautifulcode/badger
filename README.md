@@ -7,7 +7,7 @@ to get the pretty badges that every programmer geek desire
 - [x] Fetch Languages from github
 - [x] Use concurrency for performance
 - [x] Migrate to negroni
-- [ ] Page Caching
+- [x] Cache-Control Headers
 - [ ] Merge from merithub project
   - [ ] Assets
     - [ ] Javascritp
