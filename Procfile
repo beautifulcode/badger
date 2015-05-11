@@ -1,1 +1,1 @@
-web: merithub
+web: badger
