@@ -9,14 +9,32 @@ to get the pretty badges that every programmer geek desire
 - [x] Migrate to negroni
 - [x] Cache-Control Headers
 - [x] Support CORS
-- [ ] Merge from merithub project
-  - [ ] Assets
-    - [ ] Javascritp
-    - [ ] CSS
-    - [ ] Badges SVGs
-  - [ ] Deploy Script
+- [X] Merge from merithub project
+- [ ] Deploy Script
 - [ ] Homepage
 - [ ] Kickass logo
+
+## JQuery Plugin
+
+The plugin provides you a beautiful badge system
+
+### Usage
+
+Include the files on your public directory
+
+    <script src="badger.min.css"></script>
+    <script src="badger.min.js"></script>
+
+Call inside your javascript
+
+    $('#badger').badger(options);
+
+### Options
+
+|      key     | default value | description          |
+| ------------ |:-------------:|:--------------------:|
+| username     |               | your github username |
+
 
 ## Contribue to the project
 
