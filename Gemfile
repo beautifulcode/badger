@@ -6,3 +6,4 @@ gem 'sass'
 gem 'coffee-rails'
 
 gem 'sprockets-standalone'
+gem 'rails_12factor', group: :production
