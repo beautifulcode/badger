@@ -13,7 +13,8 @@
           fraction /= Math.pow(10, 3)
 
     setBadges = (languages) =>
-      for lang of languages
+      languagesSorted = Object.keys(languages).sort (a,b) -> languages[b]-languages[a]
+      for lang in languagesSorted
         @item.append("<span class='badge-#{lang.toLowerCase()}' title='more than #{easyNumber(languages[lang])} lines of #{lang} code'></span>")
 
     $.get("https://merithub.herokuapp.com/github/#{@options.username}/languages/").done (data) => setBadges(data)

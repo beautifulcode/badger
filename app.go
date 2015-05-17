@@ -19,10 +19,13 @@ func sha1String(s string) string {
 }
 
 func main() {
-	r := render.New()
+	r := render.New(render.Options{
+		Layout: "layout",
+	})
+
 	mux := httprouter.New()
 	mux.GET("/", func(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-		w.Write([]byte("Go to /github/:username/languages/"))
+		r.HTML(w, http.StatusOK, "index", nil)
 	})
 
 	mux.GET("/github/:username/languages/", func(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {

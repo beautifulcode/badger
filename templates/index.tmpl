@@ -1,0 +1,76 @@
+<div class='row'>
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>Badger</h1>
+      <hr/>
+      <form id="searchBadges">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+          <div class="input-group">
+            <input id="github_username" type="text" class="form-control input-lg" placeholder="Search for your GitHub username">
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-danger btn-lg" type="button">Now!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      </form>
+      <hr/>
+      <div id="badges" style="text-align: center;"></div>
+    </div>
+  </div>
+  <hr/>
+  <h4>Aviable badges</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <span class="badge-actionscript" title='actionscript'></span>
+      <span class="badge-php" title='php'></span>
+      <span class="badge-c" title='c'></span>
+      <span class="badge-ruby" title='ruby'></span>
+      <span class="badge-csharp" title='csharp'></span>
+      <span class="badge-cplusplus" title='cplusplus'></span>
+      <span class="badge-ccplusplus" title='ccplusplus'></span>
+      <span class="badge-objc" title='objc'></span>
+      <span class="badge-javascript" title='javascript'></span>
+      <span class="badge-java" title='java'></span>
+      <span class="badge-dotnet" title='dotnet'></span>
+      <span class="badge-python" title='python'></span>
+      <span class="badge-lua" title='lua'></span>
+      <span class="badge-air" title='air'></span>
+      <span class="badge-jquery" title='jquery'></span>
+      <span class="badge-nodejs" title='nodejs'></span>
+      <span class="badge-django" title='django'></span>
+      <span class="badge-rails" title='rails'></span>
+      <span class="badge-coffeescript" title='coffeescript'></span>
+      <span class="badge-perl" title='perl'></span>
+      <span class="badge-fortran" title='fortran'></span>
+      <span class="badge-bash" title='bash'></span>
+      <span class="badge-shell" title='shell'></span>
+      <span class="badge-cobol" title='cobol'></span>
+      <span class="badge-delphi" title='delphi'></span>
+      <span class="badge-go" title='go'></span>
+      <span class="badge-haskell" title='haskell'></span>
+      <span class="badge-scala" title='scala'></span>
+      <span class="badge-lisp" title='lisp'></span>
+      <span class="badge-basic" title='basic'></span>
+      <span class="badge-html" title='html'></span>
+      <span class="badge-css" title='css'></span>
+      <span class="badge-angularjs" title='angularjs'></span>
+      <span class="badge-backbonejs" title='backbonejs'></span>
+      <span class="badge-clojure" title='clojure'></span>
+      <span class="badge-dart" title='dart'></span>
+      <span class="badge-erlang" title='erlang'></span>
+      <span class="badge-matlab" title='matlab'></span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $('#searchBadges').bind('submit', function(e) {
+      var username = $('#github_username').val();
+      $('#badges').html('');
+      $('#badges').badger({username: username});
+      return false
+    });
+  });
+</script>
