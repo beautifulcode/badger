@@ -1,6 +1,6 @@
 # Badger
 
-to get the pretty badges that every programmer geek desire
+Get the pretty badges for every geek coder
 
 ## TODO
 
@@ -9,9 +9,9 @@ to get the pretty badges that every programmer geek desire
 - [x] Migrate to negroni
 - [x] Cache-Control Headers
 - [x] Support CORS
-- [X] Merge from merithub project
-- [ ] Deploy Script
-- [ ] Homepage
+- [x] Merge from merithub project
+- [x] Homepage
+- [ ] Purge Icons
 - [ ] Kickass logo
 
 ## JQuery Plugin
