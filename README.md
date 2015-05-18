@@ -1,3 +1,5 @@
+![Preview](https://raw.githubusercontent.com/3zcurdia/badger/master/public/preview.png "preview")
+
 # Badger
 
 Get the pretty badges for every geek coder
