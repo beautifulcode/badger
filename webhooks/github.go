@@ -41,6 +41,9 @@ func GithubCount(username string) map[string]int {
 		case res := <-response:
 			hash := parseLanguages(res)
 			for key, value := range hash {
+				if key == "Emacs Lisp" {
+					key = "Lisp"
+				}
 				_, ok := languages[key]
 				if ok {
 					languages[key] += value
