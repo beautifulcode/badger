@@ -12,6 +12,19 @@ type GithubRepo struct {
 	LanguagesUrl string `json:"languages_url"`
 }
 
+func normalizeLanguage(key string) string {
+	switch key {
+	case "Emacs Lisp":
+		return "Lisp"
+	case "C++":
+		return "CPlusPlus"
+	case "C#":
+		return "CSharp"
+	default:
+		return key
+	}
+}
+
 func GithubCount(username string) map[string]int {
 	var repos []GithubRepo
 	token := os.Getenv("GITHUB_TOKEN")
@@ -41,9 +54,7 @@ func GithubCount(username string) map[string]int {
 		case res := <-response:
 			hash := parseLanguages(res)
 			for key, value := range hash {
-				if key == "Emacs Lisp" {
-					key = "Lisp"
-				}
+				key = normalizeLanguage(key)
 				_, ok := languages[key]
 				if ok {
 					languages[key] += value
