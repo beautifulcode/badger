@@ -10,3 +10,7 @@ Sprockets::Standalone::RakeTask.new(:assets) do |task, sprockets|
   sprockets.js_compressor  = :uglifier
   sprockets.css_compressor = :sass
 end
+namespace :assets do
+  desc "Alias for Compile assets"
+  task :precompile => :compile
+end

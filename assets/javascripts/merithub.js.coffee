@@ -1,8 +1,8 @@
 (($) ->
   $.badger = (@item, options) ->
-    @options = $.extend({remote_style: false}, options)
+    @options = $.extend({remote_style: true}, options)
     if @options['remote_style'] == true
-      $('head').append("<link rel='stylesheet' type='text/css' href='http://ezcurdia.me/badger/badger.min.css' />")
+      $('head').append("<link rel='stylesheet' type='text/css' href='https://getbadger.herokuapp.com/badger.min.js' />")
 
     easyNumber = (num) =>
       fraction = num
